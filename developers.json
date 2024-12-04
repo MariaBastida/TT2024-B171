@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Maria Bastida",
+      "description": "FullStack Developer",
+      "github": "https://github.com/MariaBastida",
+      "linkedin": "https://www.linkedin.com/in/maria-bastida-g/",
+      "photo": "./images/maria_bastida.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jessica Juárez",
+      "description": "Frontend Developer",
+      "github": "https://github.com/Jess-Juarez",
+      "linkedin": "https://www.linkedin.com/in/juarez-cabrera-jessica-185620285/",
+      "photo": "/images/JessiJuarez.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Alan Ortiz",
+        "description": "Backend Developer",
+        "github": "https://github.com/aortizglz",
+        "linkedin": "https://www.linkedin.com/in/ortiz-gonzalez-alan-0666272aa?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BeY76eiXOTlOMzx8IuAXI0g%3D%3D",
+        "photo": "/images/alangonzalez.jpeg"
+      }
+  ]
+  
