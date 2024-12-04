@@ -2,7 +2,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import styles from './Header.module.css';
-import logoHeader from '../../../public/images/footer_logo.png'
+import logoHeader from '../../../images/footer_logo.png'
 
 export function Header() {
   return (

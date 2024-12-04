@@ -36,7 +36,7 @@ const Footer = (props) => {
         </div>
       </div>
       <div className={styles.base}>
-        <img src="../../../public/images/footer_logo.png" alt="logo" />
+        <img src="../../../images/footer_logo.png" alt="logo" />
         <p> &copy;. Todos los derechos Reservados.</p>
       </div>
     </footer>
