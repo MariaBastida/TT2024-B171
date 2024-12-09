@@ -1,14 +1,15 @@
 import classes from "./SecondSection.module.css";
-
+import { useNavigate } from "react-router-dom";
 import nutrientsIcon from "./Images/Property 1=bag.svg";
 import wateringIcon from "./Images/Property 1=water.svg";
 import sunlightIcon from "./Images/Property 1=sun.svg";
-import firstImg from "./Images/Rectangle 32.png";
-import secondImg from "./Images/Rectangle 33.png";
-import thirdImg from "./Images/Rectangle 34.png";
+import firstImg from "../../../public/images/pino_sempervirens.jpeg";
+import secondImg from "../../../public/images/pino_macrocarpa.jpeg";
+import thirdImg from "../../../public/images/pino_base.jpeg";
 
 
 const SecondSection = () => {
+  const navigate =useNavigate();
   return (
     <section className={classes.moreInfo}>
       <span className={classes.titleItem}>
@@ -50,12 +51,14 @@ const SecondSection = () => {
           En nuestra página web, ofrecemos una herramienta innovadora para detectar enfermedades en dos tipos de Pinopsidas: Sempervirens y Macrocarpa. A través de un modelo de aprendizaje automático, podemos identificar tres estados clave en cada especie de árbol, lo que permite a los usuarios detectar problemas comunes y tomar medidas preventivas o correctivas a tiempo.
         </p>
         <p>Tipos de enfermedades que detectamos:</p>
-        <p>Phytophthora:</p>
-        <p>Estrés Hídrico:</p>
-        <p>        </p>
-        <button className={classes.seeMoreButton}>
-          <span className={classes.buttonText}>Saber más</span>
-        </button>
+        <ul>
+          <li>Phytophtora</li>
+          <li>Estrés Hídrico</li>
+        </ul>
+        <p></p>
+        <button className={classes.seeMoreButton} onClick={() => navigate("/Tipo-de-pinopsidas")}>
+      <span className={classes.buttonText}>Saber más</span>
+    </button>
       </div>
 
     </section>

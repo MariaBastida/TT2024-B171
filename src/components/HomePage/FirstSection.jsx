@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classes from "./FirstSection.module.css";
-import background from "./Images/image 21.png";
+import background from "../../../public/images/fondo1.png";
 import * as tmImage from '@teachablemachine/image';
 import '@tensorflow/tfjs'; // Importar TensorFlow.js
 

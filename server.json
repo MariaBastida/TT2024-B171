@@ -3,9 +3,10 @@
     "id": 1,
     "name": "Sempervirens",
     "subtitle": "Pino de la familia Pinopsida",
+    "image": "/images/pino_sempervirens.jpeg",
     "label": [
-      "exterior",
-      "árbol"
+      "Pinopsida",
+      "Exterior"
     ],
     "features": "Especie: Pinus sempervirens. Tamaño maduro: Puede alcanzar una altura de 24-30 metros con un diámetro de tronco de 0.9-1.2 metros. Tasa de crecimiento: Moderada a rápida, dependiendo de las condiciones de crecimiento. Longevidad: Generalmente vive cientos de años, con algunos ejemplares superando los 1,000 años. Clima: Se adapta a climas templados con pleno sol y suelos bien drenados. Envío: Empacado cuidadosamente para garantizar una entrega segura y preservar su salud durante el transporte.",
     "description": "El Pinus sempervirens, comúnmente conocido como 'Pino Sempervirens', es un símbolo de fortaleza y resistencia. Su follaje perenne y su imponente presencia lo convierten en una adición impresionante a cualquier espacio exterior. Reconocido por su resiliencia y adaptabilidad, este majestuoso pino es ideal para proyectos de reforestación, barreras contra el viento o como punto focal en paisajes amplios. Sus agujas de color verde intenso y sus pequeñas piñas leñosas añaden un valor ornamental único."
@@ -14,6 +15,7 @@
   {
     "id": 2,
     "name": "Macrocarpa",
+    "image": "/images/pino_macrocarpa.jpeg",
     "subtitle": "Pino de la familia Pinopsida",
     "label": [
       "exterior",

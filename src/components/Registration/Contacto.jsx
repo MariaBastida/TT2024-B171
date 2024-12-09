@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PlantRegistration.module.css";
-import imageForm from "./imgs/image_Form.png";
+import background from "../../../public/images/fondo1.png";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
@@ -118,7 +118,7 @@ function Contacto() {
       </form>
 
       <span className={styles.formImage}>
-        <img src={imageForm} alt="background image" draggable="false" />
+        <img src={background} alt="background image" draggable="false" />
       </span>
     </div>
 

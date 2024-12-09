@@ -10,8 +10,8 @@ const CarouselCards = () => {
     useEffect(() => {
         // Datos de prueba locales
         const mockPlants = [
-            { id: 1, name: "Sempervirens", label:["Ver más"] },
-            { id: 2, name: "Macrocarpa", label:["Ver más"] },
+            { id: 1, name: "Sempervirens", label:["Ver más"],image: "/images/pino_sempervirens.jpeg" },
+            { id: 2, name: "Macrocarpa", label:["Ver más"], image: "/images/pino_macrocarpa.jpeg" },
         ];
 
         setPlants(mockPlants); // Establece los datos locales
@@ -20,9 +20,9 @@ const CarouselCards = () => {
     return (
         <div className={style.divCarousel}>
             <section className={style.sectionCarousel}>
-                <h2 className={style.sectionTitle}>
-                    Familia Pinopsida <strong className={style.titleStrong}>Reconoce las especies que puedes consultar</strong>
-                </h2>
+                <h6 className={style.sectionTitle}>
+                    Familia Pinopsida <strong className={style.titleStrong}>Reconoce las especies </strong> y enfermedades <strong className={style.titleStrong}>que puedes consultar</strong>
+                </h6>
                 <Splide
                     options={{
                         type: 'loop',
@@ -46,6 +46,7 @@ const CarouselCards = () => {
                                 id={plant.id}
                                 name={plant.name}
                                 label={plant.label}
+                                image={plant.image}
                             />
                         </SplideSlide>
                     ))}

@@ -10,8 +10,8 @@ const Details = () => {
 
     return (
         <div className={styles.container}>
-            <img src="https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1426&q=80" 
-                alt="Echinocereus Cactus" 
+            <img src= {props.image}
+                alt={`Foto de ${props.name}`} 
                 className={styles.image}
             />
             <div className={styles.content}>        
