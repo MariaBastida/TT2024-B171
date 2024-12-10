@@ -23,6 +23,54 @@
     ],
     "features": "Especie: Pinus macrocarpa. Tamaño maduro: Puede alcanzar hasta 25 metros de altura y un diámetro de tronco de hasta 1.5 metros. Tasa de crecimiento: Moderada, ideal para espacios grandes. Longevidad: Puede vivir más de 500 años. Clima: Prefiere suelos bien drenados y exposición al sol directo. Envío: Empacado con mucho cuidado para garantizar la seguridad de la planta durante el transporte.",
     "description": "El Pinus macrocarpa, también conocido como 'Pino Macrocarpa', es un árbol de gran tamaño y longevidad, conocido por su imponente porte. Es ideal para crear barreras de viento o como pieza central en grandes jardines o paisajes. Sus agujas de color verde azulado y su corteza gruesa lo hacen muy resistente y adecuado para climas templados. Además, su crecimiento lento pero constante lo convierte en una excelente opción para quienes buscan una planta de bajo mantenimiento pero de gran impacto visual."
+  },
+  {
+    "id": 3,
+    "name": "Sempervirens con Phytophthora",
+    "image": "/images/sempervirens_ph.jpg",
+    "subtitle": "Sempervirens afectado por Phytophthora",
+    "label": [
+      "Pinopsida",
+      "Enfermedad"
+    ],
+    "features": "Especie: Pinus sempervirens con Phytophthora. Resistencia baja debido a la enfermedad. Requiere cuidados intensivos para la recuperación.",
+    "description": "El Pinus sempervirens puede ser susceptible a Phytophthora, una enfermedad fúngica que afecta las raíces y reduce la vitalidad del árbol. Es crucial tratarlo con fungicidas específicos y mejorar el drenaje del suelo."
+  },
+  {
+    "id": 4,
+    "name": "Sempervirens con estrés hídrico",
+    "image": "/images/sempervirens_eh.jpg",
+    "subtitle": "Sempervirens con falta de agua",
+    "label": [
+      "Pinopsida",
+      "Estrés hídrico"
+    ],
+    "features": "Especie: Pinus sempervirens bajo estrés hídrico. Requiere riego adecuado y medidas de conservación de agua.",
+    "description": "El Pinus sempervirens muestra signos de estrés hídrico en condiciones de sequía prolongada. Es importante regar profundamente y aplicar mantillo para retener la humedad en el suelo."
+  },
+  {
+    "id": 5,
+    "name": "Macrocarpa con estrés hídrico",
+    "image": "/images/macrocarpa_eh.jpg",
+    "subtitle": "Macrocarpa con falta de agua",
+    "label": [
+      "Pinopsida",
+      "Estrés hídrico"
+    ],
+    "features": "Especie: Pinus macrocarpa bajo estrés hídrico. Necesita atención especial para recuperar su vitalidad.",
+    "description": "El Pinus macrocarpa puede experimentar estrés hídrico en condiciones de sequía. Implementar riego profundo y técnicas de retención de agua puede ayudar a restaurar su salud."
+  },
+  {
+    "id": 6,
+    "name": "Macrocarpa con Phytophthora",
+    "image": "/images/macrocarpa_ph.jpg",
+    "subtitle": "Macrocarpa afectado por Phytophthora",
+    "label": [
+      "Pinopsida",
+      "Enfermedad"
+    ],
+    "features": "Especie: Pinus macrocarpa con Phytophthora. Susceptibilidad alta en condiciones de suelo mal drenado.",
+    "description": "El Pinus macrocarpa puede ser afectado por Phytophthora, lo que provoca deterioro en las raíces y pérdida de vigor. Mejorar el drenaje y usar fungicidas son medidas necesarias para su tratamiento."
   }
   ]
 }

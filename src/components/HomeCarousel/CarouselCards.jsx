@@ -12,6 +12,10 @@ const CarouselCards = () => {
         const mockPlants = [
             { id: 1, name: "Sempervirens", label:["Ver más"],image: "/images/pino_sempervirens.jpeg" },
             { id: 2, name: "Macrocarpa", label:["Ver más"], image: "/images/pino_macrocarpa.jpeg" },
+            { id: 3, name: "Sempervirens con Phytophthora", label: ["Ver más"], image: "/images/sempervirens_ph.jpg" },
+            { id: 4, name: "Sempervirens con estrés hídrico", label: ["Ver más"], image: "/images/sempervirens_eh.jpg" },
+            { id: 5, name: "Macrocarpa con estrés hídrico", label: ["Ver más"], image: "/images/macrocarpa_eh.jpg" },
+            { id: 6, name: "Macrocarpa con Phytophthora", label: ["Ver más"], image: "/images/macrocarpa_ph.jpg" },
         ];
 
         setPlants(mockPlants); // Establece los datos locales

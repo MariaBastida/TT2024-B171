@@ -9,10 +9,10 @@
 .sectionTitle {
     color: var(--green-700);
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
     font-family: var(--font-principal);
     font-weight: 700;
-    margin: 4rem 0;
+    margin: 2rem 0;
 }
 
 .titleStrong {
@@ -20,14 +20,14 @@
 }
 
 .sectionCarousel {
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
 }
 
 
 @media only screen and (max-width: 768px) {
     .sectionTitle {
         font-size: 3rem;
-        margin: 2.5rem 0;
+        margin: 1.5rem 0;
     }
 
     .divCarousel {
@@ -35,7 +35,7 @@
     }
 
     .sectionCarousel {
-        margin-bottom: 6rem;
+        margin-bottom: 4rem;
     }
 }
 
@@ -46,6 +46,6 @@
     
     .sectionTitle {
         font-size: 2.5rem;
-        margin: 2.5rem 0;
+        margin: 1.5rem 0;
     }
 }
