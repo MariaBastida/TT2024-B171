@@ -3,6 +3,7 @@ import classes from "./FirstSection.module.css";
 import background from "../../../public/images/fondo1.png";
 import * as tmImage from '@teachablemachine/image';
 import '@tensorflow/tfjs'; // Importar TensorFlow.js
+import { useNavigate } from "react-router-dom";
 
 // URL del modelo proporcionado por Teachable Machine
 const modelURL = "https://teachablemachine.withgoogle.com/models/T_EK8dLqI/";
@@ -13,8 +14,21 @@ const FirstSection = () => {
   const [model, setModel] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
-  // Cargar el modelo de Teachable Machine
+  const getFriendlyMessage = (className) => {
+    const messages = {
+      "Macrocarpa_Phytophtora": "una\nMacrocarpa con Phytophtora",
+      "Sempervirens_Sana": "un\nSempervirens sano",
+      "Macrocarpa_Sana": "una\nMacrocarpa sana",
+      "Sempervirens_Phytophtora": "un\nSempervirens con Phytophtora",
+      "Sempervirens_Estrés_Hídrico": "un\nSempervirens con estrés hídrico",
+      "Macrocarpa_Estrés_Hídrico": "una\nMacrocarpa con estrés hídrico",
+    };
+
+    return messages[className] || "un\nresultado desconocido";
+  };
+
   const loadModel = async () => {
     const modelData = await tmImage.load(modelURL + "model.json", modelURL + "metadata.json");
     const maxPreds = modelData.getTotalClasses();
@@ -22,7 +36,6 @@ const FirstSection = () => {
     setModel(modelData);
   };
 
-  // Manejar la carga de la imagen
   const loadImage = async (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -30,36 +43,55 @@ const FirstSection = () => {
       const img = new Image();
       img.src = reader.result;
       img.onload = async function () {
-        setImagePreview(img); // Mostrar la imagen cargada
-        setResult(""); // Limpiar resultado anterior
-        setShowModal(true); // Abrir el modal
+        setImagePreview(img);
+        setResult("");
+        setShowModal(true);
+
         if (!model) {
-          await loadModel(); // Cargar el modelo si aún no está cargado
+          await loadModel();
         }
+
+        const prediction = await model.predict(img);
+        let highestProbability = 0;
+        let className = '';
+
+        for (let i = 0; i < maxPredictions; i++) {
+          if (prediction[i].probability > highestProbability) {
+            highestProbability = prediction[i].probability;
+            className = prediction[i].className.trim();
+          }
+        }
+
+        const friendlyMessage = getFriendlyMessage(className);
+        setResult(friendlyMessage);
+
+        // Log para verificar el resultado obtenido
+        console.log("Resultado obtenido:", { friendlyMessage, className });
       };
     };
     reader.readAsDataURL(file);
   };
 
-  // Predicción usando la imagen cargada
-  const predictImage = async () => {
-    if (!model) {
-      setResult("El modelo no está cargado.");
-      return;
-    }
-    const prediction = await model.predict(imagePreview);
-    let highestProbability = 0;
-    let className = '';
+  const handleRecommendations = () => {
+    const routes = {
+      "un\nSempervirens sano": "/Tipo-de-pinopsidas/1",
+      "una\nMacrocarpa sana": "/Tipo-de-pinopsidas/2",
+      "un\nSempervirens con Phytophtora": "/Tipo-de-pinopsidas/3",
+      "un\nSempervirens con estrés hídrico": "/Tipo-de-pinopsidas/4",
+      "una\nMacrocarpa con estrés hídrico": "/Tipo-de-pinopsidas/5",
+      "una\nMacrocarpa con Phytophtora": "/Tipo-de-pinopsidas/6",
+    };
 
-    for (let i = 0; i < maxPredictions; i++) {
-      if (prediction[i].probability > highestProbability) {
-        highestProbability = prediction[i].probability;
-        className = prediction[i].className.trim();
-      }
-    }
+    const cleanResult = Object.keys(routes).find((key) =>
+      result.includes(key)
+    );
 
-    // Mostrar el resultado final
-    setResult(`Resultado: ${className}`);
+    if (cleanResult) {
+      console.log("Navegando a la ruta:", routes[cleanResult]);
+      navigate(routes[cleanResult]);
+    } else {
+      console.log("No se encontró una ruta para el resultado:", result);
+    }
   };
 
   return (
@@ -102,7 +134,6 @@ const FirstSection = () => {
             <span className={classes.buttonText}>Elegir Imagen</span>
           </button>
 
-          {/* Modal */}
           {showModal && (
             <div className={classes.modalOverlay}>
               <div className={classes.modal}>
@@ -112,21 +143,27 @@ const FirstSection = () => {
                 >
                   ✖
                 </button>
-                <h2>Resultados</h2>
+                <h2>RESULTADO</h2>
                 <div className={classes.imageContainer}>
                   <img
                     src={imagePreview?.src}
                     alt="Vista previa"
                     style={{ width: '300px', height: '300px', objectFit: 'cover' }}
                   />
-                  {result && <p className={classes.resultText}>{result}</p>}
+                  {result && (
+                    <p className={`${classes.resultText} ${classes.resultHighlight}`}>
+                      Tu imagen corresponde a
+                      <br />
+                      {result}
+                    </p>
+                  )}
+                  <button
+                    className={classes.buttonShopNow}
+                    onClick={handleRecommendations}
+                  >
+                    <span className={classes.buttonText}>Recomendaciones</span>
+                  </button>
                 </div>
-                <button
-                  className={classes.buttonShopNow}
-                  onClick={predictImage}
-                >
-                  <span className={classes.buttonText}>Predecir Resultado</span>
-                </button>
               </div>
             </div>
           )}

@@ -1,210 +1,235 @@
 /* First Section */
 
 .homeMain {
-    display: flex;
-    background-color: #F0F1EE;
-    width: 100%;
-    justify-content: space-between;
-    background-image: url(/src/components/HomePage/Images/left\ plant.png);
-    background-position-y: 20rem;
-    background-repeat: no-repeat;
-  }
-  
-  .mainContent {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    max-width: 50%;
-  }
-  
-  .backgroundImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-  }
-  
-  .homeMainText h1 {
-    text-transform: capitalize;
-    margin-bottom: 1rem;
-    font-family: var(--font-principal);
-    font-weight: 700;
-    font-size: 4rem;
-    color: var(--green-700);
-  }
-  
-  em {
-    color: var(--green-400);
-    font-style: normal;
-  }
-  
-  .subtitle {
-    display: inline-flex;
-    align-items: baseline;
-  }
-  
-  .subtitle > .subtitleText {
-    margin-inline-start: 0.5em;
-    font-family: 'Pacifico', cursive;
-    color: #000000;
-  }
-  
-  .homeMainText p {
-    margin-bottom: 1rem;
-    color: var(--green-300);
-    font-size: 1rem;
-    font-family: var(--font-details);
-  }
-  
-  .homeMainText {
-    padding: 3em 2em;
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .buttonShopNow,
-  .seeMoreButton {
-    background-color: var(--green-700);
-    border-color: var(--green-700);
-    border-width: 0.05em;
-    border-style: solid;
-    color: #fcfcfc;
-    padding: 1rem 3rem;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .buttonText {
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .seeMoreButton::before,
-  .buttonShopNow::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #F0F1EE;
-    transform: translate(-110%, 0) skew(0deg);
-    transition: 0.7s;
-  }
-  
-  .seeMoreButton:hover::before,
-  .buttonShopNow:hover::before {
-    transform: translate(0%, 0) skew(0deg);
-  }
-  
-  .seeMoreButton:hover,
-  .buttonShopNow:hover {
-    color: var(--green-700);
-  }
-  
-  .learnGardening {
-    padding: 3em 2em;
-    margin: 1rem;
-    z-index: 1;
-  }
-  
-  .learnGardening a {
-    text-decoration: none;
-    color: var(--green-300);
-  }
-  
-  .backgroundImage img:hover {
-    filter: none;
-    transition: 0.7s ease-in-out;
-  }
+  display: flex;
+  background-color: #F0F1EE;
+  width: 100%;
+  justify-content: space-between;
+  background-image: url(/src/components/HomePage/Images/left\ plant.png);
+  background-position-y: 20rem;
+  background-repeat: no-repeat;
+}
 
-  #image-preview img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover; /* Asegura que la imagen mantenga su proporción, ajustándose a las dimensiones */
-  }
-  
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 50%;
+}
 
-  @media only screen and (max-width: 768px) {
-    .backgroundImage {
-      width: 100vw;
-    }
-    .homeMainText {
-      align-items: normal;
-    }
-  }
+.backgroundImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
 
-  @media only screen and (max-width: 425px) {
-    .homeMain {
-      background-image: none;
-    }
-    .subtitle {
-      justify-content: center;
-    }
-    .homeMainText {
-      align-items: normal;
-      padding: 1rem;
-      text-align: center;
-    }
-    .mainContent {
-      max-width: 100%;
-      align-items: center;
-    }
-    .backgroundImage {
-      display: none;
-    }
-    .learnGardening {
-      padding: 1rem;
-      margin: 0;
-    }
-  }
+.homeMainText h1 {
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  font-family: var(--font-principal);
+  font-weight: 700;
+  font-size: 4rem;
+  color: var(--green-700);
+}
 
-  .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+.homeMainText h2 {
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  font-family: var(--font-principal);
+  font-weight: 500;
+  font-size: 35px;
+  color: var(--green-700);
+}
+
+em {
+  color: var(--green-400);
+  font-style: normal;
+}
+
+.subtitle {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.subtitle>.subtitleText {
+  margin-inline-start: 0.5em;
+  font-family: 'Pacifico', cursive;
+  color: #000000;
+}
+
+.homeMainText p {
+  margin-bottom: 1rem;
+  color: var(--green-300);
+  font-size: 1rem;
+  font-family: var(--font-details);
+}
+
+.homeMainText {
+  padding: 3em 2em;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.buttonShopNow,
+.seeMoreButton {
+  background-color: var(--green-700);
+  border-color: var(--green-700);
+  border-width: 0.05em;
+  border-style: solid;
+  color: #fcfcfc;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.buttonText {
+  position: relative;
+  transition: 0.5s;
+}
+
+.seeMoreButton::before,
+.buttonShopNow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #F0F1EE;
+  transform: translate(-110%, 0) skew(0deg);
+  transition: 0.7s;
+}
+
+.seeMoreButton:hover::before,
+.buttonShopNow:hover::before {
+  transform: translate(0%, 0) skew(0deg);
+}
+
+.seeMoreButton:hover,
+.buttonShopNow:hover {
+  color: var(--green-700);
+}
+
+.learnGardening {
+  padding: 3em 2em;
+  margin: 1rem;
+  z-index: 1;
+}
+
+.learnGardening a {
+  text-decoration: none;
+  color: var(--green-300);
+}
+
+.backgroundImage img:hover {
+  filter: none;
+  transition: 0.7s ease-in-out;
+}
+
+#image-preview img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  /* Asegura que la imagen mantenga su proporción, ajustándose a las dimensiones */
+}
+
+
+@media only screen and (max-width: 768px) {
+  .backgroundImage {
     width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1001;
-  }
-  
-  .closeButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    color: green;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
   }
 
-  .imageContainer {
-    display: flex;
+  .homeMainText {
+    align-items: normal;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .homeMain {
+    background-image: none;
+  }
+
+  .subtitle {
+    justify-content: center;
+  }
+
+  .homeMainText {
+    align-items: normal;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .mainContent {
+    max-width: 100%;
     align-items: center;
-    gap: 20px; /* Espacio entre la imagen y el resultado */
   }
-  
-  .resultText {
-    color: red;
-    font-size: 1.2rem;
-    font-weight: bold;
+
+  .backgroundImage {
+    display: none;
   }
+
+  .learnGardening {
+    padding: 1rem;
+    margin: 0;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1001;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: green;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column; /* Cambiar de fila a columna */
+  align-items: center; /* Centrar los elementos horizontalmente */
+  gap: 20px; /* Espacio entre la imagen y el botón */
+}
+
+
+.resultText {
+  color: white;
   
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.imageContainer .resultHighlight {
+  color: red; /* Cambia el color a rojo */
+  font-weight: bold; /* Texto en negrita */
+  margin-top: 8px; /* Espacio superior adicional */
+  font-size: 18px;
+}
