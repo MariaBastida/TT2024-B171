@@ -25,6 +25,8 @@ const CarouselCards = () => {
         <div className={style.divCarousel}>
             <section className={style.sectionCarousel}>
                 <p>ㅤ</p>
+                <p>ㅤ</p>
+                <p>ㅤ</p>
                 <h6 className={style.sectionTitle}>
                     Familia Pinopsida <strong className={style.titleStrong}>Reconoce las especies </strong> y enfermedades <strong className={style.titleStrong}>que puedes consultar</strong>
                 </h6>

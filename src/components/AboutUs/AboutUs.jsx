@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./AboutUs.module.css";
 import LogoLinkedin from "./images/linkedin.svg";
 import LogoGithub from "./images/github 1.svg";
-import Plant from "./images/left plant.svg";
+import Plant from "./images/plant.png";
 import developersData from "../../../developers.json"; 
 
 const AboutUs = () => {

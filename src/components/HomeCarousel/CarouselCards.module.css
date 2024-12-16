@@ -3,7 +3,7 @@
 .divCarousel {
     background-color: var(--green-100);
     background-color: #F0F1EE;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .sectionTitle {
@@ -12,7 +12,9 @@
     font-size: 3rem;
     font-family: var(--font-principal);
     font-weight: 700;
-    margin: 2rem 0;
+    margin: 1rem 0;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 .titleStrong {
@@ -20,7 +22,7 @@
 }
 
 .sectionCarousel {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -35,7 +37,7 @@
     }
 
     .sectionCarousel {
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
 }
 

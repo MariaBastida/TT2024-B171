@@ -195,7 +195,7 @@ const FirstSection = () => {
         </span>
       </div>
       <span className={classes.backgroundImage}>
-        <img src={background} alt="background image" draggable="false" />
+        <img src={background} alt="background image" />
       </span>
     </div>
   );
