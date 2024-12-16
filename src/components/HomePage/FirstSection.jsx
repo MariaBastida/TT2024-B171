@@ -118,6 +118,7 @@ const FirstSection = () => {
     <div className={classes.homeMain}>
       <div className={classes.mainContent}>
         <span className={classes.homeMainText}>
+          <p>ㅤ</p>
           <article className={classes.subtitle}>
             <svg
               className={classes.rectangle}
