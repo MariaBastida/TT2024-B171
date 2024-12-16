@@ -4,7 +4,6 @@ import background from "../../../public/images/fondo1.png";
 import * as tmImage from '@teachablemachine/image';
 import '@tensorflow/tfjs'; // Importar TensorFlow.js
 
-
 // URL del modelo proporcionado por Teachable Machine
 const modelURL = "https://teachablemachine.withgoogle.com/models/T_EK8dLqI/";
 
@@ -13,7 +12,7 @@ const FirstSection = () => {
   const [result, setResult] = useState("");
   const [model, setModel] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(0);
-  const [imageSelected, setImageSelected] = useState(false); // Estado para controlar si se seleccionó una imagen
+  const [showModal, setShowModal] = useState(false);
 
   // Cargar el modelo de Teachable Machine
   const loadModel = async () => {
@@ -32,8 +31,8 @@ const FirstSection = () => {
       img.src = reader.result;
       img.onload = async function () {
         setImagePreview(img); // Mostrar la imagen cargada
-        setImageSelected(true); // Imagen seleccionada
         setResult(""); // Limpiar resultado anterior
+        setShowModal(true); // Abrir el modal
         if (!model) {
           await loadModel(); // Cargar el modelo si aún no está cargado
         }
@@ -55,14 +54,12 @@ const FirstSection = () => {
     for (let i = 0; i < maxPredictions; i++) {
       if (prediction[i].probability > highestProbability) {
         highestProbability = prediction[i].probability;
-        className = prediction[i].className.trim(); // Limpiar espacios en blanco
+        className = prediction[i].className.trim();
       }
     }
-  
+
     // Mostrar el resultado final
-    setResult(`Resultado: ${className} (${(highestProbability * 100).toFixed(2)}%)`);
-
-
+    setResult(`Resultado: ${className}`);
   };
 
   return (
@@ -90,61 +87,48 @@ const FirstSection = () => {
             Carga la imagen y obtén un diagnóstico inmediato de posibles enfermedades en tus plantas.
           </p>
 
-          {!imageSelected && (
-            <>
-              <input
-                type="file"
-                id="upload-image"
-                accept="image/*"
-                onChange={loadImage}
-                className={classes.uploadInput}
-                style={{ display: 'none' }}
-              />
-              <button
-                className={classes.buttonShopNow}
-                onClick={() => document.getElementById('upload-image').click()}
-              >
-                <span className={classes.buttonText}>Elegir Imagen</span>
-              </button>
-            </>
-          )}
+          <input
+            type="file"
+            id="upload-image"
+            accept="image/*"
+            onChange={loadImage}
+            className={classes.uploadInput}
+            style={{ display: 'none' }}
+          />
+          <button
+            className={classes.buttonShopNow}
+            onClick={() => document.getElementById('upload-image').click()}
+          >
+            <span className={classes.buttonText}>Elegir Imagen</span>
+          </button>
 
-          {imagePreview && (
-            <div id="image-preview">
-              <img
-                src={imagePreview.src}
-                alt="Imagen cargada"
-                style={{ width: '300px', height: '300px', objectFit: 'cover' }}
-              />
+          {/* Modal */}
+          {showModal && (
+            <div className={classes.modalOverlay}>
+              <div className={classes.modal}>
+                <button
+                  className={classes.closeButton}
+                  onClick={() => setShowModal(false)}
+                >
+                  ✖
+                </button>
+                <h2>Resultados</h2>
+                <div className={classes.imageContainer}>
+                  <img
+                    src={imagePreview?.src}
+                    alt="Vista previa"
+                    style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+                  />
+                  {result && <p className={classes.resultText}>{result}</p>}
+                </div>
+                <button
+                  className={classes.buttonShopNow}
+                  onClick={predictImage}
+                >
+                  <span className={classes.buttonText}>Predecir Resultado</span>
+                </button>
+              </div>
             </div>
-          )}
-
-          {imagePreview && !result && (
-            <button
-              className={classes.buttonShopNow}
-              onClick={predictImage}
-            >
-              <span className={classes.buttonText}>Predecir Resultado</span>
-            </button>
-          )}
-
-          {result && (
-            <div id="result-container" className={classes.resultContainer}>
-              <p>{result}</p>
-            </div>
-          )}
-
-          {result && (
-            <button
-              className={classes.buttonShopNow}
-              onClick={() => {
-                setImagePreview(null);
-                setImageSelected(false);
-                setResult(""); // Limpiar el resultado
-              }}
-            >
-              <span className={classes.buttonText}>Elegir Otra Imagen</span>
-            </button>
           )}
         </span>
       </div>
