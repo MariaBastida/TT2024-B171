@@ -32,11 +32,9 @@ const FirstSection = () => {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        console.log("Cargando modelo...");
         const modelData = await tmImage.load(modelURL + "model.json", modelURL + "metadata.json");
         setMaxPredictions(modelData.getTotalClasses());
         setModel(modelData);
-        console.log("Modelo cargado con éxito.");
       } catch (error) {
         console.error("Error al cargar el modelo:", error);
         setModel(null);
@@ -68,7 +66,6 @@ const FirstSection = () => {
         }
 
         try {
-          console.log("Realizando predicción...");
           const prediction = await model.predict(img);
           let highestProbability = 0;
           let className = '';
@@ -82,15 +79,18 @@ const FirstSection = () => {
 
           const friendlyMessage = getFriendlyMessage(className);
           setResult(friendlyMessage);
-          console.log("Resultado obtenido:", { friendlyMessage, className });
         } catch (error) {
           console.error("Error durante la predicción:", error);
           setResult("Hubo un problema al analizar la imagen. Inténtalo nuevamente.");
         }
       };
     };
+
     reader.readAsDataURL(file);
+
+    event.target.value = "";
   };
+
 
   const handleRecommendations = () => {
     const routes = {
@@ -107,10 +107,8 @@ const FirstSection = () => {
     );
 
     if (cleanResult) {
-      console.log("Navegando a la ruta:", routes[cleanResult]);
       navigate(routes[cleanResult]);
     } else {
-      console.log("No se encontró una ruta para el resultado:", result);
     }
   };
 
@@ -160,7 +158,14 @@ const FirstSection = () => {
           </button>
 
           {showModal && (
-            <div className={classes.modalOverlay}>
+            <div
+              className={classes.modalOverlay}
+              onClick={(e) => {
+                if (e.target.className.includes('modalOverlay')) {
+                  setShowModal(false);
+                }
+              }}
+            >
               <div className={classes.modal}>
                 <button
                   className={classes.closeButton}
@@ -192,6 +197,7 @@ const FirstSection = () => {
               </div>
             </div>
           )}
+
         </span>
       </div>
       <span className={classes.backgroundImage}>
