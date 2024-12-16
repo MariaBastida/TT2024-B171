@@ -1,7 +1,7 @@
 [
     {
       "id": 1,
-      "name": "Maria Bastida",
+      "name": "María Bastida",
       "description": "FullStack Developer",
       "github": "https://github.com/MariaBastida",
       "linkedin": "https://www.linkedin.com/in/maria-bastida-g/",
@@ -17,7 +17,7 @@
     },
     {
         "id": 3,
-        "name": "Alan Ortiz",
+        "name": "Alan Ortíz",
         "description": "Backend Developer",
         "github": "https://github.com/aortizglz",
         "linkedin": "https://www.linkedin.com/in/ortiz-gonzalez-alan-0666272aa?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BeY76eiXOTlOMzx8IuAXI0g%3D%3D",
