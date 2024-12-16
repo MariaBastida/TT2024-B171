@@ -1,16 +1,21 @@
-.header { 
-  
+.header {
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.10rem 6.25rem;
   isolation: isolate;
-  max-width: 100%vh;
-  margin: auto;
+  max-width: 100%; 
+  margin: 0 auto;
   height: 5.5rem;
   background: #F0F1EE;
   border: 1px transparent var(--gray-900);
+  
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 1000; 
 }
 
 .header > .imgvetor {
@@ -51,12 +56,9 @@
 
 .login {
   width: 2.1875rem;
-  height:  2.1875rem;
+  height: 2.1875rem;
   left: 97.625rem;
   top: 27px;
-  
-
-  
 }
 
 .login > a {
@@ -65,37 +67,35 @@
   cursor: pointer;
   line-height: 0;
   border-radius: 2px;
-
 }
 
 @media (max-width: 700px) {
-.header, .links, .login{
-  grid-template-columns: 1fr;
-}
-.header {
-  padding: 1.5rem ;
-  
+  .header, .links, .login {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+
+  .links {
+    flex-direction: column;
+    justify-content: space-evenly;
+    display: grid;
+    max-width: auto;
+    max-height: fit-content;
+    grid-template-columns: 2.5rem 2.5rem;
+  }
+
+  .links a {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 1rem;
+    padding: 0.1rem;
+    gap: 1.5rem;
+  }
 }
 
-.links{
-  flex-direction: column;
-  justify-content: space-evenly;
-  display: grid;
-  max-width: auto;
-  max-height: fit-content;
-  
-  grid-template-columns: 2.5rem 2.5rem;
-  
-  
+body {
+  margin-top: 5.5rem; 
 }
-
-.links a {
-  display: grid;
-  grid-template-columns: auto auto;
-  height: 1rem;
-  padding: 0.1rem;
-  gap: 1.5rem;
-  
-}
-}
-
