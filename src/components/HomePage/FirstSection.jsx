@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from "./FirstSection.module.css";
 import background from "../../../public/images/fondo1.png";
 import * as tmImage from '@teachablemachine/image';
-import '@tensorflow/tfjs'; // Importar TensorFlow.js
+import '@tensorflow/tfjs';
 import { useNavigate } from "react-router-dom";
 
-// URL del modelo proporcionado por Teachable Machine
 const modelURL = "https://teachablemachine.withgoogle.com/models/T_EK8dLqI/";
 
 const FirstSection = () => {
@@ -14,6 +13,7 @@ const FirstSection = () => {
   const [model, setModel] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [isModelLoading, setIsModelLoading] = useState(true);
   const navigate = useNavigate();
 
   const getFriendlyMessage = (className) => {
@@ -29,15 +29,29 @@ const FirstSection = () => {
     return messages[className] || "un\nresultado desconocido";
   };
 
-  const loadModel = async () => {
-    const modelData = await tmImage.load(modelURL + "model.json", modelURL + "metadata.json");
-    const maxPreds = modelData.getTotalClasses();
-    setMaxPredictions(maxPreds);
-    setModel(modelData);
-  };
+  useEffect(() => {
+    const loadModel = async () => {
+      try {
+        console.log("Cargando modelo...");
+        const modelData = await tmImage.load(modelURL + "model.json", modelURL + "metadata.json");
+        setMaxPredictions(modelData.getTotalClasses());
+        setModel(modelData);
+        console.log("Modelo cargado con éxito.");
+      } catch (error) {
+        console.error("Error al cargar el modelo:", error);
+        setModel(null);
+      } finally {
+        setIsModelLoading(false);
+      }
+    };
+
+    loadModel();
+  }, []);
 
   const loadImage = async (event) => {
     const file = event.target.files[0];
+    if (!file) return;
+
     const reader = new FileReader();
     reader.onload = function () {
       const img = new Image();
@@ -48,25 +62,31 @@ const FirstSection = () => {
         setShowModal(true);
 
         if (!model) {
-          await loadModel();
+          console.error("El modelo no está disponible.");
+          setResult("Error: el modelo no está cargado. Inténtalo de nuevo.");
+          return;
         }
 
-        const prediction = await model.predict(img);
-        let highestProbability = 0;
-        let className = '';
+        try {
+          console.log("Realizando predicción...");
+          const prediction = await model.predict(img);
+          let highestProbability = 0;
+          let className = '';
 
-        for (let i = 0; i < maxPredictions; i++) {
-          if (prediction[i].probability > highestProbability) {
-            highestProbability = prediction[i].probability;
-            className = prediction[i].className.trim();
+          for (let i = 0; i < maxPredictions; i++) {
+            if (prediction[i].probability > highestProbability) {
+              highestProbability = prediction[i].probability;
+              className = prediction[i].className.trim();
+            }
           }
+
+          const friendlyMessage = getFriendlyMessage(className);
+          setResult(friendlyMessage);
+          console.log("Resultado obtenido:", { friendlyMessage, className });
+        } catch (error) {
+          console.error("Error durante la predicción:", error);
+          setResult("Hubo un problema al analizar la imagen. Inténtalo nuevamente.");
         }
-
-        const friendlyMessage = getFriendlyMessage(className);
-        setResult(friendlyMessage);
-
-        // Log para verificar el resultado obtenido
-        console.log("Resultado obtenido:", { friendlyMessage, className });
       };
     };
     reader.readAsDataURL(file);
@@ -126,12 +146,16 @@ const FirstSection = () => {
             onChange={loadImage}
             className={classes.uploadInput}
             style={{ display: 'none' }}
+            disabled={isModelLoading}
           />
           <button
             className={classes.buttonShopNow}
             onClick={() => document.getElementById('upload-image').click()}
+            disabled={isModelLoading}
           >
-            <span className={classes.buttonText}>Elegir Imagen</span>
+            <span className={classes.buttonText}>
+              {isModelLoading ? "Cargando modelo..." : "Elegir Imagen"}
+            </span>
           </button>
 
           {showModal && (
