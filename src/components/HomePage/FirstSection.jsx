@@ -160,38 +160,46 @@ const FirstSection = () => {
           </button>
 
           {showModal && (
-            <div className={classes.modalOverlay}>
-              <div className={classes.modal}>
-                <button
-                  className={classes.closeButton}
-                  onClick={() => setShowModal(false)}
-                >
-                  ✖
-                </button>
-                <h2>RESULTADO</h2>
-                <div className={classes.imageContainer}>
-                  <img
-                    src={imagePreview?.src}
-                    alt="Vista previa"
-                    style={{ width: '300px', height: '300px', objectFit: 'cover' }}
-                  />
-                  {result && (
-                    <p className={`${classes.resultText} ${classes.resultHighlight}`}>
-                      Tu imagen corresponde a
-                      <br />
-                      {result}
-                    </p>
-                  )}
-                  <button
-                    className={classes.buttonShopNow}
-                    onClick={handleRecommendations}
-                  >
-                    <span className={classes.buttonText}>Recomendaciones</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+  <div
+    className={classes.modalOverlay}
+    onClick={(e) => {
+      if (e.target.className.includes('modalOverlay')) {
+        setShowModal(false);
+      }
+    }}
+  >
+    <div className={classes.modal}>
+      <button
+        className={classes.closeButton}
+        onClick={() => setShowModal(false)}
+      >
+        ✖
+      </button>
+      <h2>RESULTADO</h2>
+      <div className={classes.imageContainer}>
+        <img
+          src={imagePreview?.src}
+          alt="Vista previa"
+          style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+        />
+        {result && (
+          <p className={`${classes.resultText} ${classes.resultHighlight}`}>
+            Tu imagen corresponde a
+            <br />
+            {result}
+          </p>
+        )}
+        <button
+          className={classes.buttonShopNow}
+          onClick={handleRecommendations}
+        >
+          <span className={classes.buttonText}>Recomendaciones</span>
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
         </span>
       </div>
       <span className={classes.backgroundImage}>
