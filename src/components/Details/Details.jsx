@@ -32,7 +32,9 @@ const Details = () => {
                     <li className={styles.features}>{props.features}</li>           
                 </ul>
                 <h2 className={styles.subtitle}>Descripción</h2>
-                <p className={styles.description}>{props.description}</p>                
+                <p className={styles.description}>{props.description}</p>   
+                <h2 className={styles.subtitle}>Recomendaciones</h2>
+                <p className={styles.description}>{props.recommendation}</p>               
             </div>
         </div>
 
