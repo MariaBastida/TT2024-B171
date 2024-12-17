@@ -22,16 +22,25 @@
     font-weight: 700;
 }
 
-.plantPrice {
-    color: var(--green-700);
-    font-size: 1rem;
-    margin-right: 1rem;
-}
-
-.plantDiscount {
-    color: var(--green-200);
-    text-decoration: line-through;
-}
+.divCard {
+    width: 300px; /* Ancho fijo para las cards */
+    height: 420px; /* Alto fijo para las cards */
+    border: 1px solid #ddd; /* Borde opcional */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para estética */
+    overflow: hidden; /* Evita que el contenido se desborde */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+  }
+  
+  .imageCard {
+    width: 100%; /* Se adapta al ancho del contenedor */
+    height: 60%; /* Ocupa el 60% del alto total de la card */
+    object-fit: cover; /* Mantiene las proporciones y recorta si es necesario */
+    border-bottom: 1px solid #ddd; /* Línea divisoria opcional */
+  }
 
 .plantTag {
     margin-right: auto;

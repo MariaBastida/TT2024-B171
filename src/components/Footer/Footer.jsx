@@ -17,15 +17,15 @@ const Footer = (props) => {
       <div className={styles.top}>
         <div className={styles.main}>
           <h1>Kiefer</h1>
-          <a href="mailto:compassinhos@gmail.com">compassinhos@gmail.com</a>
-          <a href="tel:+5541999999999">+55 41 99999-9999</a>
+          <a href="mailto:kiefer.nature@gmail.com">kiefer.nature@gmail.com</a>
+          <a href="tel:+52 55 1660 9371">+52 55 1660 9371 </a>
         </div>
         <div className={styles.aside}>
           <div className={styles.links}>
             <h2>Recursos</h2>
             <a href="https://www.freepik.es" target="_blank" rel="noopener noreferrer">Logo</a>
-            <Link to="/product">Imagenes</Link>
-            <a href="#">Blogs</a>
+            <Link to="https://www.freepik.es">Imagenes</Link>
+            <a href="https://www.freepik.es">Recursos ilustrativos</a>
           </div>
           <div className={styles.community}>
             <h2>Comunidad</h2>

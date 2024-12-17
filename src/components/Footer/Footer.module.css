@@ -2,6 +2,7 @@
 
 .footer {
     background-color: var(--green-700);
+    background-image: url('../../../public/images/footer_background.png');
     color: var(--white);
     padding: 0 50px;
     padding-top: 68px;

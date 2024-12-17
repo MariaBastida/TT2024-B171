@@ -50,11 +50,11 @@ const SecondSection = () => {
         <p>
           En nuestra página web, ofrecemos una herramienta innovadora para detectar enfermedades en dos tipos de Pinopsidas: Sempervirens y Macrocarpa. A través de un modelo de aprendizaje automático, podemos identificar tres estados clave en cada especie de árbol, lo que permite a los usuarios detectar problemas comunes y tomar medidas preventivas o correctivas a tiempo.
         </p>
-        <p>Tipos de enfermedades que detectamos:</p>
+        <p>Tipos de enfermedades que detectamos:
         <ul>
           <li>Phytophtora</li>
           <li>Estrés Hídrico</li>
-        </ul>
+        </ul></p>
         <p></p>
         <button className={classes.seeMoreButton} onClick={() => navigate("/Tipo-de-pinopsidas")}>
       <span className={classes.buttonText}>Saber más</span>

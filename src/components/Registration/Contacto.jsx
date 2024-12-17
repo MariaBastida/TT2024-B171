@@ -1,19 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PlantRegistration.module.css";
-import background from "../../../public/images/fondo1.png";
+import background from "../../../public/images/fondo2.png";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 function Contacto() {
   const [plantData, setPlantData] = useState({
     name: "",
     type: "",
-    price: "",
-    discount: "",
     label: "",
-    features: "",
-    description: ""
+    description: "",
   });
 
   const navigate = useNavigate();
@@ -21,37 +19,45 @@ function Contacto() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Obtener datos existentes de localStorage
-    const storedData = JSON.parse(localStorage.getItem("plants")) || [];
+    // Configurar parámetros para enviar con EmailJS
+    const templateParams = {
+      to_email: "kiefer.nature@gmail.com", // Correo de destino
+      from_name: plantData.name,
+      from_email: plantData.type, // Correo ingresado por el usuario
+      label: plantData.label,
+      message: plantData.description,
+    };
 
-    // Agregar los nuevos datos
-    const updatedData = [...storedData, plantData];
-
-    // Guardar en localStorage
-    localStorage.setItem("plants", JSON.stringify(updatedData));
-
-    alert("Comentario enviado!");
-
-    // Resetear el formulario
-    setPlantData({
-      name: "",
-      type: "",
-      price: "",
-      discount: "",
-      label: "",
-      features: "",
-      description: ""
-    });
-
-    toast.success("Tu comentario fue enviado!", {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 3000,
-    });
-    navigate("/");
+    // Enviar el correo usando EmailJS
+    emailjs
+      .send(
+        "service_c7s6bml", // Reemplaza con tu Service ID
+        "template_nxw8gjm", // Reemplaza con tu Template ID
+        templateParams,
+        "Xxm4eGk44RIZgo2Qt" // Reemplaza con tu Public Key
+      )
+      .then(
+        (response) => {
+          console.log("Correo enviado con éxito!", response.status, response.text);
+          toast.success("¡Comentario enviado correctamente!", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000,
+          });
+          // Resetear el formulario
+          setPlantData({
+            name: "",
+            type: "",
+            label: "",
+            description: "",
+          });
+          navigate("/");
+        },
+        (err) => {
+          console.error("Error al enviar el correo: ", err);
+          toast.error("Hubo un error al enviar tu comentario. Inténtalo de nuevo.");
+        }
+      );
   };
-
-
-
 
   return (
     <div className={styles.regContainer}>
@@ -67,22 +73,21 @@ function Contacto() {
           placeholder="Escribe aquí tu nombre completo"
           value={plantData.name}
           onChange={(e) => setPlantData({ ...plantData, name: e.target.value })}
-          className={styles.wideInput} // Clase para mayor ancho
+          className={styles.wideInput}
         />
         <label htmlFor="type">Correo</label>
         <input
-          type="text"
+          type="email"
           placeholder="Escribe aquí tu correo electrónico (opcional)"
           value={plantData.type}
           onChange={(e) => setPlantData({ ...plantData, type: e.target.value })}
-          className={styles.wideInput} // Clase para mayor ancho
+          className={styles.wideInput}
         />
         <label>Quiero recibir respuesta:</label>
         <div className={styles.formLabelRadio}>
           <span>
             <input
               type="radio"
-              id="indoor"
               value="Si"
               checked={plantData.label === "Si"}
               onChange={(e) => setPlantData({ ...plantData, label: e.target.value })}
@@ -92,7 +97,6 @@ function Contacto() {
           <span>
             <input
               type="radio"
-              id="outdoor"
               value="No"
               checked={plantData.label === "No"}
               onChange={(e) => setPlantData({ ...plantData, label: e.target.value })}
@@ -111,7 +115,7 @@ function Contacto() {
           />
         </div>
         <div>
-          <button className={styles.registerButton} type="submit" value="Register">
+          <button className={styles.registerButton} type="submit">
             <span className={styles.registerButtonText}>Enviar</span>
           </button>
         </div>
@@ -121,9 +125,7 @@ function Contacto() {
         <img src={background} alt="background image" draggable="false" />
       </span>
     </div>
-
   );
-};
+}
 
-// <ViewPlants/>
 export default Contacto;

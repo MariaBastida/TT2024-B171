@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import classes from "./FirstSection.module.css";
-import background from "../../../public/images/fondo1.png";
+import background from "../../../public/images/fondo2.png";
 import * as tmImage from '@teachablemachine/image';
 import '@tensorflow/tfjs';
 import { useNavigate } from "react-router-dom";
+import thirdImg from "../../../public/images/infografia.png";
 
 const modelURL = "https://teachablemachine.withgoogle.com/models/T_EK8dLqI/";
 
@@ -135,7 +136,7 @@ const FirstSection = () => {
             Detecta Enfermedades en tus <em>Pinopsida</em> aquí
           </h1>
           <p>
-            Carga la imagen y obtén un diagnóstico inmediato de posibles enfermedades en tus plantas.
+            Carga tu imagen y obtén un pre-diagnóstico de posibles enfermedades en tus pinos.
           </p>
 
           <input
@@ -156,6 +157,8 @@ const FirstSection = () => {
               {isModelLoading ? "Cargando modelo..." : "Elegir Imagen"}
             </span>
           </button>
+          <p>ㅤ</p>
+          <img src={thirdImg} draggable="false" />
 
           {showModal && (
             <div
