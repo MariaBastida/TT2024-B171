@@ -69,7 +69,8 @@ const FirstSection = () => {
         try {
           const prediction = await model.predict(img);
           let highestProbability = 0;
-          let className = '';
+          let className = ''
+          let totalProbability = 0;
 
           for (let i = 0; i < maxPredictions; i++) {
             if (prediction[i].probability > highestProbability) {
@@ -78,8 +79,13 @@ const FirstSection = () => {
             }
           }
 
-          const friendlyMessage = getFriendlyMessage(className);
-          setResult(friendlyMessage);
+          const threshold = 0.7;
+          if (highestProbability < threshold || totalProbability < 1.1) {
+            setResult("ninguna clase conocida");
+          } else {
+            const friendlyMessage = getFriendlyMessage(className);
+            setResult(friendlyMessage);
+          }
         } catch (error) {
           console.error("Error durante la predicción:", error);
           setResult("Hubo un problema al analizar la imagen. Inténtalo nuevamente.");
@@ -190,12 +196,15 @@ const FirstSection = () => {
                       {result}
                     </p>
                   )}
-                  <button
-                    className={classes.buttonShopNow}
-                    onClick={handleRecommendations}
-                  >
-                    <span className={classes.buttonText}>Recomendaciones</span>
-                  </button>
+
+                  {result && result !== "ninguna clase conocida" && (
+                    <button
+                      className={classes.buttonShopNow}
+                      onClick={handleRecommendations}
+                    >
+                      <span className={classes.buttonText}>Recomendaciones</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
